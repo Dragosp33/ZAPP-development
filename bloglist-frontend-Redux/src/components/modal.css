@@ -1,0 +1,103 @@
+#bottombar {
+  position: fixed;
+  height: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform-origin: left bottom;
+  background-color: red;
+}
+
+.smooth-transition {
+  transition: transform 0.8s ease; /* Adjust the duration and timing function as needed */
+}
+
+.modal-height-transition {
+  transition: height 0.3s ease; /* Adjust the duration and timing function as needed */
+}
+
+.textarea-container {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+textarea {
+  width: 100%;
+
+  /* Set a minimum height for the textarea 
+  min-height: 60px !important;*/
+  background-color: lightblue;
+  resize: none;
+  overflow-y: hidden;
+  /* Disable manual resizing 
+  
+  overflow-y: auto;*/
+}
+.modal-90w {
+  width: 90% !important;
+}
+
+.modal-transition-enter {
+  transform: translateX(-100%) translateZ(1px) !important;
+}
+.modal-transition-enter-active {
+  transform: translateX(0) translateZ(1px) !important;
+  transition:
+    transform 1s,
+    opacity 0.5s;
+}
+.modal-transition-exit {
+  transform: translateX(0) !important;
+}
+.modal-transition-exit-active {
+  transform: translateX(-100%) translateZ(1px) !important;
+  transition:
+    transform 1s,
+    opacity 0.5s;
+}
+
+.transitionModal-enter {
+  visibility: visible !important;
+}
+
+.transitionModal-enter .modal-dialog {
+  transform: translateX(0%) translateZ(1px) !important;
+}
+
+.transitionModal-exit {
+  visibility: hidden !important;
+}
+.transitionModal-exit .modal-dialog {
+  opacity: 0 !important;
+  transform: translateX(-10%) translateZ(1px) !important;
+
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 200ms !important;
+}
+
+.faded-content {
+  opacity: 0;
+}
+
+.rotate-content .modaldiv2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.rotate-content .modaldiv2,
+.rotate-content .modaldiv1 {
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 400ms, 50ms !important;
+}
+
+.modaldiv2 {
+  opacity: 0;
+}
+
+.modal-content {
+  transition: width 0.2s ease; /* Add a smooth transition for the width property */
+}

@@ -1,0 +1,1 @@
+Online fly.io app: https://blogsapi.fly.dev/api/blogs

@@ -1,0 +1,111 @@
+.signup-container {
+  margin-top: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #425966 !important;
+  min-height: 90vh;
+}
+
+.signup-logo {
+  width: 100% !important;
+}
+
+.signup-row {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.header {
+  background-color: #425966 !important;
+  height: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header h3 {
+  color: yellow;
+  text-shadow: 2px 2px black;
+}
+
+.login-page {
+  min-height: 100vh;
+  background-color: #425966 !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.login-page-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 991px) {
+  .login-form-container {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#loginBtn,
+#signupBtn {
+  width: 100%;
+}
+
+#signupBtn {
+  background-color: #426643;
+  border-color: rgb(190, 205, 50);
+}
+
+.loginBtn-container,
+.signupBtn-container {
+  width: 100%;
+  align-self: center;
+}
+
+.signup-div {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-div a {
+  text-decoration: none;
+  color: white;
+}
+
+.text-between-lines {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: rgb(62, 62, 62);
+}
+
+.text {
+  padding: 0 15px;
+}

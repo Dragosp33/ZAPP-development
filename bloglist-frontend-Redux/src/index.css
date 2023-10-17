@@ -1,0 +1,619 @@
+body {
+  padding-top: 60px;
+}
+
+.error {
+  border: black 2px solid;
+  color: rgb(255, 0, 0);
+  padding: 3px;
+  margin: 2px;
+}
+
+.notification {
+  border: black 2px solid;
+  color: green;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  margin: 10px;
+  width: 25%;
+  height: 20%;
+  background-color: #111;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.ball {
+  width: 30%;
+  height: 90%;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(55px);
+}
+
+.NotFound {
+  background-color: white !important;
+  color: black !important;
+}
+
+.blog-form {
+  /*border: 2px lightgray solid;*/
+}
+
+.description-input {
+  overflow-y: auto;
+  /*font-size: 1.5rem;
+  /*max-height: 90vh;*/
+  border: none;
+}
+
+.photo-description {
+  font-size: 1rem !important;
+  overflow-y: auto;
+  height: auto !important;
+  border: none;
+}
+
+.gallery-container {
+  display: flex;
+}
+
+.flex-container {
+  flex: 1;
+  display: flex;
+}
+
+.left-item {
+  flex: 1;
+  background-color: lightblue;
+}
+
+.right-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-item {
+  flex: 1;
+  background-color: lightgreen;
+  margin: 5px;
+}
+
+.blog-form {
+  overflow-x: hidden;
+  /* set a max height, !!! check: for mobile, it results ? in a double scrolling ->> one for this blog-form, and one for the text-area
+  max-height: 500px; 
+  max-height: 500px;*/
+  overflow-y: auto;
+}
+
+@media (min-width: 767px) {
+  .blog-form {
+    max-height: 400px;
+  }
+
+  .gallery-modal .modal-body {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+}
+
+.img-gallery-border {
+  overflow: clip;
+  overflow-clip-margin: content-box;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.blog-form textarea {
+  width: 100%;
+
+  /* Set a minimum height for the textarea */
+
+  resize: none; /* Disable manual resizing */
+  overflow-y: hidden !important;
+}
+
+.body-container {
+  overflow-y: hidden;
+  padding-top: 10px;
+  display: flex;
+  /*overflow-y: auto;*/
+  justify-content: center;
+}
+
+.footer-container {
+  flex-direction: column;
+}
+
+.image-gallery {
+  display: grid;
+  gap: 5px;
+}
+
+/*
+.image-block {
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+*/
+.image-item {
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* image button wrapper  these are the individual buttons for first gallery, no more used because we use second gallery for edit*/
+.image-item__btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.updateBtn {
+  border-radius: 16px;
+  padding-left: 8px;
+  padding-bottom: 4px;
+  border: 2px black solid;
+}
+/* above are buttons no more used, for editing (update or delete ) individual photos */
+
+.modal-height-transition {
+  /*transition: height 0.3s ease; /* Adjust the duration and timing function as needed */
+  /*transform: translateX(0%) !important;*/
+  transition:
+    /*transform 0.1s ease,*/
+    height 0.3s ease,
+    opacity 0.15s linear;
+}
+
+/* here starts transitions and transform for switching between modals - animations */
+.second-transition {
+  opacity: 0;
+
+  transform: translateX(100%) translateZ(1px);
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 400ms, 250ms !important;
+}
+
+@media (max-width: 600px) {
+  .second-transition {
+    transition-delay: 200ms;
+  }
+}
+
+/*
+.second-transition-exit {
+  opacity: 1;
+  transform: translateX(0%) translateZ(1px);
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 400ms, 250ms !important;
+}*/
+
+.fade.modal-second .modal-dialog {
+  transform: translateX(-100%) translateZ(1px) !important;
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 2400ms, 2250ms !important;
+}
+
+.fade.show.modal-second .modal-dialog {
+  transform: translateX(0%) translateZ(1px) !important;
+  transition-property: transform, opacity !important;
+  transition-timing-function: cubic-bezier(0.08, 0.52, 0.52, 1) !important;
+  transition-duration: 400ms, 250ms !important;
+}
+/* here is the end of animations for switching between modals */
+
+.gallery-test {
+  background-color: grey;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.gallery-test {
+  background-color: white !important;
+}
+
+.card-img-top {
+  object-fit: contain;
+  /*height: 100%;  Ensure the image takes the full height of the card */
+  /* width: 100%; /* Ensure the image takes the full width of the card */
+}
+
+.card-img-container {
+  flex: 2;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  filter: blur(5px);
+}
+
+/*
+.card-img-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  filter: blur(5px); /* Apply a blur effect to the background image */
+/*z-index: -1; /* Place the background behind the image 
+}*/
+
+.fixed-height {
+  min-height: 300px;
+  height: 50vh !important;
+  /* overflow-y: hidden;*/
+}
+
+.card-body {
+  flex: 1;
+  position: relative;
+}
+
+[data-bs-theme="light"] .gallery-modal .modal-body {
+  background-color: rgb(228, 230, 235) !important;
+}
+
+[data-bs-theme="dark"] .gallery-modal .modal-body {
+  background-color: #313437 !important;
+}
+
+@media (min-width: 991px) {
+  .blog-form::-webkit-scrollbar-track,
+  .modal-body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+
+  .blog-form::-webkit-scrollbar,
+  .modal-body::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .blog-form::-webkit-scrollbar-thumb,
+  .modal-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #555;
+  }
+}
+
+@media (max-width: 991px) {
+  .img-gallery-btn-wrapper {
+    display: none;
+  }
+}
+
+/* header: title and close button for second modal */
+.gallery-modal .btn-close {
+  margin: 0;
+  background: url("./components/arrow-left.svg") center/contain no-repeat;
+}
+
+.gallery-title {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.close-btn-wrapper {
+  margin: -0.5rem -0.5rem auto;
+  padding: 4px;
+  border-radius: 50%;
+  z-index: 99 !important;
+}
+
+[data-bs-theme="light"] .close-btn-wrapper {
+  background-color: lightgray;
+}
+/* header for the second modal ends here */
+
+.bd-layout {
+  display: grid;
+  grid-template-areas: "main main";
+  grid-template-columns: 1fr 7fr;
+  gap: 1.5rem;
+}
+/* main layout here: sidebar | main main main main */
+@media (min-width: 992px) {
+  .bd-layout {
+    display: grid;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 1fr 7fr;
+    gap: 1.5rem;
+  }
+
+  #bdSidebar {
+    visibility: visible !important;
+    position: sticky;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
+    display: block !important;
+    width: 200px !important;
+    height: calc(100vh - 6rem);
+    padding-left: 0.25rem;
+    margin-left: -0.25rem;
+    overflow-y: auto;
+    transform: none;
+  }
+}
+
+#bdSidebar .offcanvas-body .nav {
+  flex-direction: column;
+  align-items: center;
+}
+
+.bd-sidebar {
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}
+/* end main layout above */
+
+/* first modal ( create post ) styling: header and gallery below */
+/*first modal header: */
+.create-post-header {
+  align-items: center;
+  justify-content: center;
+}
+
+.create-post-header .btn-close {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  margin-right: 2%;
+}
+/*first modal header ends here */
+
+/* first modal gallery and actions start here */
+.upload__image-wrapper {
+  position: relative;
+  padding: 4px;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+}
+
+.img-gallery-btn-wrapper {
+  display: none;
+}
+
+.none {
+  display: none;
+}
+
+.img-gallery-actions-wrapper .action-btn-wrapper {
+  display: flex;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-gallery-actions-wrapper,
+.second-modal-img-actions-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 5px;
+  padding-left: 5px;
+  display: none;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 2%;
+}
+
+.second-modal-img-actions-wrapper {
+  display: flex;
+}
+
+.image-gallery:hover .img-gallery-actions-wrapper {
+  display: flex;
+}
+
+.img-gallery-actions-wrapper .edit-action-btn {
+  background-color: #d2d2d2;
+  color: black;
+  border: none;
+}
+
+.img-gallery-actions-wrapper .remove-action-btn-wrapper {
+  border-radius: 50%;
+  background-color: #d8d8d8;
+}
+
+.img-gallery-actions-wrapper .remove-action-btn {
+  padding: 0.3rem 0.6rem;
+  scale: 1.6;
+  color: black;
+  padding-top: 10% !important;
+}
+
+.img-upload-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload_photo-post-btn {
+  margin-left: 10px;
+  color: green;
+  scale: 1.5;
+  background: transparent !important;
+  border: none;
+}
+
+.upload_photo-post-btn:hover {
+  margin-left: 10px;
+  color: green !important;
+  scale: 1.5 !important;
+  background: lightgray !important;
+  border: none !important;
+}
+
+.upload_photo-post-btn:focus {
+  margin-left: 10px;
+  color: green;
+  scale: 1.5;
+  background: lightgray !important;
+  border: none;
+}
+
+.upload_photo-post-btn:active {
+  color: green;
+  scale: 1.5;
+  background: lightgray !important;
+  border: none;
+}
+
+[data-bs-theme="dark"] {
+  .upload_photo-post-btn:hover,
+  .upload_photo-post-btn:focus,
+  .upload_photo-post-btn:active {
+    background: transparent !important;
+  }
+}
+
+.submit-post-btn {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+/* first modal gallery and actions (-> like upload photo, edit gallery) end here */
+
+/* thunder beat start animation here */
+.beat {
+  padding-right: 5px;
+  transform: translate(-50%, -50%);
+  animation: beat 1s infinite alternate;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+/*thunder beat animation end here */
+
+/*navigation-grid here -> responsive navbar items alignment */
+.navigation-grid {
+  display: grid !important;
+  grid-template-areas: "Brand Search Nav-Bar-Toggle Notification Profile";
+  row-gap: 10%;
+}
+
+.navbar-brand {
+  grid-area: Brand;
+}
+
+.bd-navbar-toggle {
+  grid-area: Nav-Bar-Toggle;
+}
+
+.Search {
+  grid-area: Search;
+}
+
+.nav-notifications {
+  grid-area: Notification;
+}
+
+.profile-offcanvas {
+  grid-area: Profile;
+}
+
+.navbar {
+  border-bottom: 2px solid lightgray;
+  box-shadow: lightgray 2px 2px;
+  border-radius: 0% 0% 10px 10px;
+}
+
+@media (max-width: 991px) {
+  body {
+    padding-top: 100px;
+  }
+  .navigation-grid {
+    grid-template-areas:
+      "Nav-Bar-Toggle Brand Profile"
+      "Search Search Notification";
+  }
+
+  .navbar {
+    padding-bottom: 20px;
+    border-radius: 0% 0% 5px 5px;
+    box-shadow: none;
+  }
+}
+
+[data-bs-theme="dark"] .navbar {
+  border-color: yellow;
+}
