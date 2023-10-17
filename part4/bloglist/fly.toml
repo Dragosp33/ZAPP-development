@@ -1,15 +1,16 @@
-# fly.toml app configuration file generated for blogs2app on 2023-08-15T14:49:02+03:00
+# fly.toml app configuration file generated for zapp on 2023-10-17T21:51:37+03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "blogs2app"
+app = "zapp"
 primary_region = "otp"
 
 [build]
 
 [env]
   PORT = "3000"
+
 
 [http_service]
   internal_port = 3000

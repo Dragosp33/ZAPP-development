@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.4923e6b9.css",
-    "main.js": "/static/js/main.c13ce326.js",
+    "main.css": "/static/css/main.e8241b10.css",
+    "main.js": "/static/js/main.c50553e9.js",
+    "static/media/ZAPP.png": "/static/media/ZAPP.40e6119df1f476942136.png",
+    "static/media/ZAPP.svg": "/static/media/ZAPP.146937eb90ce93183c98d38635807ccd.svg",
     "index.html": "/index.html",
-    "main.4923e6b9.css.map": "/static/css/main.4923e6b9.css.map",
-    "main.c13ce326.js.map": "/static/js/main.c13ce326.js.map"
+    "static/media/arrow-left.svg": "/static/media/arrow-left.83aa775a65892efff8dd.svg"
   },
   "entrypoints": [
-    "static/css/main.4923e6b9.css",
-    "static/js/main.c13ce326.js"
+    "static/css/main.e8241b10.css",
+    "static/js/main.c50553e9.js"
   ]
 }
