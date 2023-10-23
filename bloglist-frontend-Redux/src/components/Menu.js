@@ -7,12 +7,15 @@ import {
   NavDropdown,
   Form,
   Card,
+  InputGroup,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Link } from 'react-router-dom'
 import { setMode } from '../reducers/darkmodeReducer'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
+import './Menu.css'
+import MenuSearch from './MenuSearch'
 
 const Menu = ({ handleLogout }) => {
   const padding = {
@@ -58,9 +61,10 @@ const Menu = ({ handleLogout }) => {
               aria-controls="bdSidebar"
               aria-label="Toggle docs navigation"
             >
-              <i class="bi bi-list"></i>
+              <i className="bi bi-list"></i>
             </button>
           </div>
+          {/*}
           <Form className="d-flex Search">
             <Form.Control
               type="search"
@@ -68,11 +72,13 @@ const Menu = ({ handleLogout }) => {
               className="me-2"
               aria-label="Search"
             />
-            {/*} <Button variant="outline-success">Search</Button>*/}
-          </Form>
+            {/*} <Button variant="outline-success">Search</Button>
+          </Form>*/}
+
+          <MenuSearch />
           <div className="nav-notifications">
             <Button variant="warning">
-              <i class="bi bi-bell"></i>
+              <i className="bi bi-bell"></i>
             </Button>
           </div>
           {/*<Navbar.Toggle aria-controls="responsive-navbar-nav" />*/}

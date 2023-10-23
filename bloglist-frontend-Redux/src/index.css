@@ -2,6 +2,10 @@ body {
   padding-top: 60px;
 }
 
+.body-no-scroll {
+  overflow: hidden;
+}
+
 .error {
   border: black 2px solid;
   color: rgb(255, 0, 0);
@@ -616,4 +620,13 @@ a {
 
 [data-bs-theme="dark"] .navbar {
   border-color: yellow;
+}
+
+.navbar-brand {
+}
+
+@media (max-width: 662px) {
+  .main {
+    width: 97vw;
+  }
 }

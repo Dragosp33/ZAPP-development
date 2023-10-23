@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import { initializeBlogs } from '../reducers/blogsReducer'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import { likeBlog, deleteBlog } from '../reducers/blogsReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import ShowBlogsItem from './ShowBlogsItem'
 
 const ShowBlogs = ({ user = null }) => {
   const [loading, setLoading] = useState(true)
@@ -32,19 +35,27 @@ const ShowBlogs = ({ user = null }) => {
   console.log('user to show blogs from: ', user)
   console.log(`blogs: `, stateBlogs)
 */
+
+  const likefunction = async (blog) => {
+    console.log('blog at first in like function: ', blog)
+    try {
+      dispatch(likeBlog(blog.id))
+      // setBlog(response)
+
+      dispatch(setNotification(`voted for ${blog.title}`))
+    } catch {
+      dispatch(
+        setNotification('Oops, it seems like the author removed the post'),
+      )
+    }
+  }
   return (
     <>
       <div className="container">
         {user ? <p> blogs by user {user.username}</p> : null}
         {stateBlogs.map((blog) => (
-          <div key={blog.id}>
-            <Link to={`/blogs/${blog.id}`}> go to this blog </Link>
-            <div> {blog.description} </div>
-            <img style={{ height: '200px' }} src={blog.images[0]} alt=".." />
-            <Button type="button">
-              {' '}
-              {blog.likedBy.includes(stateUser.id) ? 'Dislike' : 'Like'}
-            </Button>
+          <div key={blog.id} style={{ width: '100%' }}>
+            <ShowBlogsItem blog={blog} />
           </div>
         ))}
       </div>

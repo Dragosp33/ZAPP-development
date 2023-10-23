@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Routes, Route, useMatch } from 'react-router-dom'
 import { Row, Col, Card, Button, Form } from 'react-bootstrap'
 import zappSVG from './ZAPP.svg'
@@ -12,6 +13,8 @@ const LoginForm = ({
   password,
   handlePasswordChange,
 }) => {
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="container-fluid login-page">
@@ -70,15 +73,18 @@ const LoginForm = ({
                       </div>
                     </form>
                     <div className="signup-div">
-                      <div class="text-between-lines">
-                        <div class="line"></div>
-                        <div class="text"> First time here? </div>
-                        <div class="line"></div>
+                      <div className="text-between-lines">
+                        <div className="line"></div>
+                        <div className="text"> First time here? </div>
+                        <div className="line"></div>
                       </div>
                       <div className="signupBtn-container">
-                        <Button id="signupBtn" type="button">
-                          {' '}
-                          <Link to={'/signup'}>Sign up</Link>{' '}
+                        <Button
+                          id="signupBtn"
+                          type="button"
+                          onClick={() => navigate('/signup')}
+                        >
+                          Sign up
                         </Button>
                       </div>
                     </div>

@@ -30,10 +30,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Routes, Route, useMatch, Link } from 'react-router-dom'
 //botstrap:
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+
 import TestMenu from './components/menuTest'
-import TwoPageModal from './components/FormTest'
+
 import Gallery from './components/ImagesUploader'
-import TestAside from './components/FormTest'
+import TestAside from './components/SideBar'
 import BlogSecond from './components/BlogSecond'
 import SignUp from './components/SignUp'
 
@@ -207,33 +209,33 @@ const App = () => {
           <Menu username={user.name} />
 
           <div className="container-xxl bd-gutter mt-3 my-md-4 bd-layout ">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <TestAside />
-                    <main className="main">
+            <TestAside />
+            <main className="main">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
                       <BlogForm />
                       <ShowBlogs />
-                    </main>
-                  </>
-                }
-              />
+                    </>
+                  }
+                />
 
-              <Route path="/users" element={<Users />} />
-              <Route
-                path="/users/:id"
-                element={<SingleUser userPage={userPage} />}
-              />
-              {/*}<Route path="/test/blogs/:id" element={<BlogSecond />} />*/}
-              <Route
-                path="/blogs/:id"
-                element={<Blog shownBlog={blogPage} />}
-              />
+                <Route path="/users" element={<Users />} />
+                <Route
+                  path="/users/:id"
+                  element={<SingleUser userPage={userPage} />}
+                />
+                {/*}<Route path="/test/blogs/:id" element={<BlogSecond />} />*/}
+                <Route
+                  path="/blogs/:id"
+                  element={<Blog shownBlog={blogPage} />}
+                />
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
           </div>
         </>
       )}

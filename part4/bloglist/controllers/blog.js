@@ -77,7 +77,11 @@ blogsRouter.post('/test', upload.array('images', 5), async (req, res) => {
 })
 
 blogsRouter.get('/', async (request, response) => {
-  const Blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
+  const Blogs = await Blog.find({}).populate('user', {
+    username: 1,
+    name: 1,
+    profilePicUrl: 1,
+  })
   // console.log(Blogs)
   response.json(Blogs)
 })
@@ -187,7 +191,11 @@ blogsRouter.put('/:id/like', async (request, response) => {
       runValidators: true,
       context: 'query',
     })
-    const k2 = await responseBlog.populate('user', { username: 1, name: 1 })
+    const k2 = await responseBlog.populate('user', {
+      username: 1,
+      name: 1,
+      profilePicUrl: 1,
+    })
     console.log(k2)
     response.status(202).json(k2)
   } else {

@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema({
   verifyURL: String,
   passwordHash: String,
   blogs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }],
+  profilePicUrl: {
+    type: String,
+    default:
+      'https://heroevent.s3.eu-west-3.amazonaws.com/blank-profile-picture-973460_640.png',
+  },
 })
 
 userSchema.set('toJSON', {

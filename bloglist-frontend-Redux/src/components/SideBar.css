@@ -1,0 +1,33 @@
+.bd-sidebar .offcanvas-body .nav-item button {
+  width: 50%;
+  border: none;
+  border-radius: 15px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media (min-width: 991px) {
+  .bd-sidebar .offcanvas-backdrop.show {
+    opacity: 0;
+  }
+  .bd-sidebar .offcanvas-body .nav-item button {
+    width: 90%;
+  }
+}
+
+.bd-sidebar .offcanvas-body .nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bd-sidebar .offcanvas-body .nav-item .nav-link {
+  color: white !important;
+}
+
+[data-bs-theme="light"] {
+  .bd-sidebar .offcanvas-body .nav-item .nav-link {
+    color: black !important;
+  }
+}

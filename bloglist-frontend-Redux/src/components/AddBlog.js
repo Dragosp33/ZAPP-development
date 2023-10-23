@@ -297,7 +297,7 @@ const BlogForm = ({ handleSubmit }) => {
                       onChange={onImagesChange}
                       //   maxNumber={maxNumber}
                       dataURLKey="data_url"
-                      acceptType={['jpg']}
+                      acceptType={['jpg', 'png', 'jpeg']}
                     >
                       {({
                         imageList,
