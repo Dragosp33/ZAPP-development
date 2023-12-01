@@ -186,7 +186,10 @@ const App = () => {
         <>
           <Routes>
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/verify/:verificationCode" component={SignupVerify} />
+            <Route
+              path="/verify/:verificationCode"
+              component={<SignupVerify />}
+            />
             <Route
               path="*"
               element={
