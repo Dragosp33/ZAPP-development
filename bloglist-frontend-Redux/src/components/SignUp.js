@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import signupService from '../services/signup'
+import WorldScene from './Signup3D'
 
 const SignUp = () => {
   const { Formik } = formik
@@ -174,7 +175,8 @@ const SignUp = () => {
                 </Col>
                 <Col md="5">
                   {' '}
-                  <img src={zappSVG} alt="..." className="signup-logo" />
+                  {/*} <img src={zappSVG} alt="..." className="signup-logo" />*/}
+                  <WorldScene />
                 </Col>
               </div>
             </div>

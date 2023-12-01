@@ -27,7 +27,36 @@
 }
 
 [data-bs-theme="light"] {
+  .sidebar-btn {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), #a1a1a1);
+    /* backdrop-filter: blur(10px); */
+    border: 1px solid black;
+    /* color: #000; */
+    /* padding: 10px 20px; */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
   .bd-sidebar .offcanvas-body .nav-item .nav-link {
     color: black !important;
+  }
+}
+
+[data-bs-theme="dark"] {
+  .sidebar-btn {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    /* backdrop-filter: blur(10px); */
+    border: 1px solid black;
+    /* color: #000; */
+    /* padding: 10px 20px; */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-btn {
+    width: 100% !important;
   }
 }

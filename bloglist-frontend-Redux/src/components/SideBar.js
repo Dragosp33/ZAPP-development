@@ -35,14 +35,22 @@ const TestAside = () => {
               defaultActiveKey="/"
             >
               <Nav.Item>
-                <button data-bs-dismiss="offcanvas" data-bs-target="#bdSidebar">
+                <button
+                  data-bs-dismiss="offcanvas"
+                  data-bs-target="#bdSidebar"
+                  className="sidebar-btn"
+                >
                   <Nav.Link eventKey="/" as={Link} to="/">
                     Home
                   </Nav.Link>
                 </button>
               </Nav.Item>
               <Nav.Item>
-                <button data-bs-dismiss="offcanvas" data-bs-target="#bdSidebar">
+                <button
+                  data-bs-dismiss="offcanvas"
+                  data-bs-target="#bdSidebar"
+                  className="sidebar-btn"
+                >
                   <Nav.Link eventKey="/users" as={Link} to="/users">
                     users
                   </Nav.Link>

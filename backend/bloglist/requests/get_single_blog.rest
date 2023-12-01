@@ -1,0 +1,2 @@
+@id = 64be37d12f260e015bb92832
+GET http://localhost:3003/api/blogs/{{id}}

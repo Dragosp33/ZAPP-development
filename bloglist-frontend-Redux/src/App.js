@@ -30,7 +30,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Routes, Route, useMatch, Link } from 'react-router-dom'
 //botstrap:
 import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import bootstrapBundleMin from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 import TestMenu from './components/menuTest'
 
@@ -38,6 +38,7 @@ import Gallery from './components/ImagesUploader'
 import TestAside from './components/SideBar'
 import BlogSecond from './components/BlogSecond'
 import SignUp from './components/SignUp'
+import SignupVerify from './components/SignupVerify'
 
 const App = () => {
   const user = useSelector((state) => state.user)
@@ -185,6 +186,7 @@ const App = () => {
         <>
           <Routes>
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/verify/:verificationCode" component={SignupVerify} />
             <Route
               path="*"
               element={
@@ -212,6 +214,10 @@ const App = () => {
             <TestAside />
             <main className="main">
               <Routes>
+                <Route
+                  path="/verify/:verificationCode"
+                  element={<SignupVerify />}
+                />
                 <Route
                   path="/"
                   element={

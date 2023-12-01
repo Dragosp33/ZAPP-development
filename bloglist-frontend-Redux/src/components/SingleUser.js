@@ -65,7 +65,10 @@ const SingleUser = ({ userPage }) => {
   console.log(user)
   return (
     <>
-      <div className="edit-profile-pic-flex">
+      <div
+        className="edit-profile-pic-flex"
+        style={{ flexDirection: 'column', alignItems: 'center' }}
+      >
         <div style={{ marginRight: '1rem', marginLeft: '1rem' }}>
           <img
             src={user.profilePicUrl}
@@ -73,7 +76,7 @@ const SingleUser = ({ userPage }) => {
             alt="profile pic"
           />
         </div>
-        <div>
+        <div style={{ marginTop: '1rem' }}>
           <h5> {user.username} </h5>
         </div>
         {editable ? (

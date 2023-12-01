@@ -4,23 +4,26 @@ import {
   Button,
   Offcanvas,
   Container,
-  NavDropdown,
-  Form,
+  //NavDropdown,
+  // Form,
   Card,
-  InputGroup,
+  //InputGroup,
 } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { logoutUser } from '../reducers/loginReducer'
+// import { BrowserRouter, Link } from 'react-router-dom'
 import { setMode } from '../reducers/darkmodeReducer'
 import { useEffect, useState, useRef } from 'react'
 import { BsMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
 import './Menu.css'
 import MenuSearch from './MenuSearch'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Menu = ({ handleLogout }) => {
   const padding = {
     paddingRight: 5,
   }
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
@@ -45,6 +48,11 @@ const Menu = ({ handleLogout }) => {
   const switchDark = () => {
     dispatch(setMode())
     console.log('called switchddark')
+  }
+
+  const goToProfile = () => {
+    navigate(`users/${user.id}`)
+    setShowOffcanvas(false)
   }
 
   return (
@@ -138,12 +146,38 @@ const Menu = ({ handleLogout }) => {
               </div>
             </Nav.Item>
             <Nav.Item>
-              <Card className="px-1" border={mode}>
+              <Card className="px-1 mt-5" border={mode}>
+                <Card.Header>
+                  <button onClick={goToProfile}>
+                    <div class="d-flex flex-rows align-items-center">
+                      <div style={{ marginRight: '1rem' }}>
+                        <img
+                          src={user.profilePicUrl}
+                          style={{ height: '3rem', borderRadius: '50%' }}
+                          alt="profile pic"
+                        />
+                      </div>{' '}
+                      <div> {user.username} </div>{' '}
+                    </div>
+                  </button>
+                </Card.Header>
+                <Card.Title className="px-2 mt-2">Details</Card.Title>
                 <Card.Body>
-                  {' '}
-                  <i className="bi bi-person-circle"></i>{' '}
+                  <div>User logged in {user.username} </div>
+                  Email: {user.email}
                 </Card.Body>
-                <Card.Title> User logged in {user.username}</Card.Title>
+
+                <Card.Footer>
+                  <Button
+                    className={`bg-${mode} btn-${mode}`}
+                    onClick={() => {
+                      dispatch(logoutUser())
+                    }}
+                  >
+                    {' '}
+                    Log out{' '}
+                  </Button>
+                </Card.Footer>
               </Card>
             </Nav.Item>
           </Nav>

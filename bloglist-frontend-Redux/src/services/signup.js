@@ -6,4 +6,10 @@ const signup = async (body) => {
   return response.data
 }
 
-export default { signup }
+const verify_account = async (url) => {
+  const response = await axios.get(`${baseUrl}/verify/${url}`)
+  console.log('response???', response)
+  return response.data
+}
+
+export default { signup, verify_account }

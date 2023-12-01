@@ -54,9 +54,12 @@ export const verifyTokenUser = () => {
 }
 
 export const logoutUser = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     try {
-      dispatch(removeUser())
+      const response = await loginService.logout()
+      if (response) {
+        dispatch(removeUser())
+      }
     } catch (error) {
       console.log('there was an error')
     }

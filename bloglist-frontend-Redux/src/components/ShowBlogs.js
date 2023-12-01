@@ -51,7 +51,7 @@ const ShowBlogs = ({ user = null }) => {
   }
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ maxWidth: '540px' }}>
         {user ? <p> blogs by user {user.username}</p> : null}
         {stateBlogs.map((blog) => (
           <div key={blog.id} style={{ width: '100%' }}>

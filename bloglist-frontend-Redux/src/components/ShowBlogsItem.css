@@ -16,3 +16,18 @@
   align-items: center;
   justify-content: center;
 }
+
+.blog-item-onepic-container img {
+  width: 100% !important;
+}
+
+.carousel-indicators button {
+  width: 7px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: #ffa702 !important;
+}
+
+.carousel-indicators {
+  bottom: -35% !important;
+}

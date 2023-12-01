@@ -1,0 +1,7 @@
+@id = 64cd3e340e977f6b692fbf20
+PUT http://localhost:3003/api/blogs/{{id}}
+Content-Type: application/json
+
+{
+
+}

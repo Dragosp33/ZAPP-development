@@ -17,4 +17,13 @@ const verifyToken = async () => {
   }
 }
 
-export default { login, verifyToken }
+const logout = async () => {
+  try {
+    const response = await axios.post(`${baseUrl}/logout`)
+    return response.data
+  } catch {
+    return 'Oops, something went wrong'
+  }
+}
+
+export default { login, verifyToken, logout }
