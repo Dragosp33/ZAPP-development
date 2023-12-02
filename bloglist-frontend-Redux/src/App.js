@@ -60,7 +60,7 @@ const App = () => {
     }
 
     verifyAndInitialize()
-    console.log('triggered verify token useEffect')
+    //  console.log('triggered verify token useEffect')
 
     /*
     const initialUser = await loginService.verifyToken
@@ -78,7 +78,7 @@ const App = () => {
   useEffect(() => {
     //dispatch(initializeBlogs())
     dispatch(fetchUsers())
-    console.log('triggered useEffect')
+    // console.log('triggered useEffect')
   }, [dispatch])
   const blogs = useSelector((state) => state.blogs)
   const users = useSelector((state) => state.userlist)
@@ -169,9 +169,9 @@ const App = () => {
     ? blogs.find((blog) => blog.id === blogMatch.params.id)
     : null
 
-  console.log('  RENDER        IN       APP.JS, user: ', user)
+  // console.log('  RENDER        IN       APP.JS, user: ', user)
 
-  const apiControlToken = process.env.REACT_APP_API_CONTROL_TOKEN
+  // const apiControlToken = process.env.REACT_APP_API_CONTROL_TOKEN
 
   //  console.log(apiControlToken)
   if (loading) {
@@ -187,8 +187,8 @@ const App = () => {
           <Routes>
             <Route path="/signup" element={<SignUp />} />
             <Route
-              path="/verify/:verificationCode"
-              component={<SignupVerify />}
+              path="/signup/verify/:verificationCode"
+              element={<SignupVerify />}
             />
             <Route
               path="*"
@@ -217,10 +217,6 @@ const App = () => {
             <TestAside />
             <main className="main">
               <Routes>
-                <Route
-                  path="/verify/:verificationCode"
-                  element={<SignupVerify />}
-                />
                 <Route
                   path="/"
                   element={

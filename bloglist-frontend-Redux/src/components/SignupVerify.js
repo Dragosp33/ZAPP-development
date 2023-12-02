@@ -23,7 +23,7 @@ const SignupVerify = () => {
     verifyAccount()
   }, [verificationCode])
 
-  console.log(message)
+  console.log('verify message:', message)
   if (message === 'Loading') {
     return <>Verifying your account...</>
   } else if (message === 'verified') {
