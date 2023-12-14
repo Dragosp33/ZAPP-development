@@ -74,12 +74,12 @@ const ShowBlogsItem = ({ blog }) => {
                 alt="..."
               />
             </a>
-            <a href={`/users/${blog.user.id}`}>
+            <Link to={`/users/${blog.user.id}`}>
               <p className="blog-card-header-content-p">
                 {' '}
                 {blog.user.username}
               </p>
-            </a>
+            </Link>
           </div>
         </Card.Header>
         <Card.Body>
@@ -171,7 +171,7 @@ const ShowBlogsItem = ({ blog }) => {
           </div>
         </Card.Body>
         <Card.Footer>
-          {blog.likedBy.includes(stateUser.id) ? (
+          {!blog.likedBy.includes(stateUser.id) ? (
             <Button
               type="button"
               style={{ background: 'transparent', border: 'none' }}

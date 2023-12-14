@@ -148,8 +148,11 @@ const Menu = ({ handleLogout }) => {
             <Nav.Item>
               <Card className="px-1 mt-5" border={mode}>
                 <Card.Header>
-                  <button onClick={goToProfile}>
-                    <div class="d-flex flex-rows align-items-center">
+                  <button
+                    onClick={goToProfile}
+                    className={`bg-${mode} btn-${mode} rounded w-100`}
+                  >
+                    <div className="d-flex flex-rows align-items-center">
                       <div style={{ marginRight: '1rem' }}>
                         <img
                           src={user.profilePicUrl}

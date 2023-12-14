@@ -4,8 +4,11 @@ import ImageUploading from 'react-images-uploading'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
-import refresh from './refresh.png'
+import { toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { appendBlog } from '../reducers/blogsReducer'
 
 const BlogForm = ({ handleSubmit }) => {
   const [modalHeight, setModalHeight] = useState('100%')
@@ -19,6 +22,8 @@ const BlogForm = ({ handleSubmit }) => {
   const [descriptionFont, setDescriptionFont] = useState('1.5rem')
   const [textareaHeight, setTextareaHeight] = useState('auto')
   const [showSecond, setShowSecond] = useState(false)
+  const theme = useSelector((state) => state.mode)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // Recalculate textarea height based on font size when descriptionFont changes
@@ -63,9 +68,38 @@ const BlogForm = ({ handleSubmit }) => {
       data.append('images', images[i].file, images[i].file.name)
     }
 
-    const k = await axios.post('api/blogs/test', data)
-    console.log(k.data)
-    setDescription('')
+    try {
+      const response = await axios.post('api/blogs/test', data)
+      console.log(response.data)
+
+      dispatch(appendBlog(response.data))
+      setDescription('')
+      setImages([])
+      setShowSecond(false)
+      setShow(false)
+      toast.success('Post uploaded', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: theme,
+      })
+    } catch (error) {
+      console.log('caught error:', error)
+      toast.error(error.response.data.message, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: theme,
+      })
+    }
   }
 
   function handleShow() {
@@ -244,6 +278,7 @@ const BlogForm = ({ handleSubmit }) => {
 
   return (
     <>
+      <ToastContainer />
       <Button className="me-2 mb-2" onClick={() => handleShow()}>
         What zapped your head?
       </Button>

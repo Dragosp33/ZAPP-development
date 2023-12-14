@@ -41,7 +41,7 @@ signupRouter.post('/', async (req, res) => {
   }
   const randomUrl = uuidv4()
   const host = req.hostname
-  const link = `${req.protocol}://${host}/verify/${randomUrl}`
+  const link = `${req.protocol}://${host}/signup/verify/${randomUrl}`
   const msg = {
     to: email,
     from: 'dragos.polifronie@s.unibuc.ro',

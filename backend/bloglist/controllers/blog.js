@@ -27,54 +27,64 @@ console.log(storage)
 const upload = multer({ storage: storage })
 
 // Define the route for handling file uploads
-blogsRouter.post('/test', upload.array('images', 5), async (req, res) => {
-  try {
-    // Iterate through the uploaded files and upload them to S3
-    const uploadedImages = []
-    for (const file of req.files) {
-      const randomString = uuidv4()
-      const key = randomString + Date.now() + path.extname(file.originalname)
-      const params = {
-        Bucket: 'heroevent',
-        Key: key,
-        Body: file.buffer,
+blogsRouter.post(
+  '/test',
+  userExtractor,
+  upload.array('images', 5),
+  async (req, res) => {
+    try {
+      // Iterate through the uploaded files and upload them to S3
+      const uploadedImages = []
+      for (const file of req.files) {
+        const randomString = uuidv4()
+        const key = randomString + Date.now() + path.extname(file.originalname)
+        const params = {
+          Bucket: 'heroevent',
+          Key: key,
+          Body: file.buffer,
+        }
+
+        const command = new PutObjectCommand(params)
+        await s3Client.send(command)
+
+        // Store the S3 object URL in your database or return it to the client
+        // 015e31933548461020e2ba448e85995e
+        const s3ObjectUrl = `https://heroevent.s3.eu-west-3.amazonaws.com/${key}`
+        uploadedImages.push(s3ObjectUrl)
       }
 
-      const command = new PutObjectCommand(params)
-      await s3Client.send(command)
+      const saveDescription = req.body.description
+      const user = req.user
 
-      // Store the S3 object URL in your database or return it to the client
-      // 015e31933548461020e2ba448e85995e
-      const s3ObjectUrl = `https://heroevent.s3.eu-west-3.amazonaws.com/${key}`
-      uploadedImages.push(s3ObjectUrl)
+      // Handle your response here
+      // res.json({ images: uploadedImages })
+      console.log(uploadedImages)
+      const toSaveBlog = new Blog({
+        description: saveDescription,
+        likes: 0,
+        images: uploadedImages,
+        user: user._id,
+      })
+      console.log(toSaveBlog)
+      const savedBlog = await toSaveBlog.save()
+      console.log(savedBlog)
+      // save blog to user
+      user.blogs = user.blogs.concat(savedBlog._id)
+      await user.save()
+      const parsedResponse = await savedBlog.populate('user', {
+        username: 1,
+        name: 1,
+        profilePicUrl: 1,
+      })
+
+      res.status(201).json(parsedResponse)
+    } catch (error) {
+      console.error('Error uploading photos: ', error)
+      res.status(500).json({ message: 'Error uploading photos' })
     }
-
-    const saveDescription = req.body.description
-    const user = req.user
-
-    // Handle your response here
-    // res.json({ images: uploadedImages })
-    console.log(uploadedImages)
-    const toSaveBlog = new Blog({
-      description: saveDescription,
-      likes: 0,
-      images: uploadedImages,
-      user: user._id,
-    })
-    console.log(toSaveBlog)
-    const savedBlog = await toSaveBlog.save()
-    console.log(savedBlog)
-    // save blog to user
-    user.blogs = user.blogs.concat(savedBlog._id)
-    await user.save()
-    const k2 = await savedBlog.populate('user', { username: 1, name: 1 })
-    res.status(201).json(k2)
-  } catch (error) {
-    console.error('Error uploading photos: ', error)
-    res.status(500).json({ error: 'Error uploading photos' })
+    // Do something with the uploaded files, e.g., store them in Amazon S3
   }
-  // Do something with the uploaded files, e.g., store them in Amazon S3
-})
+)
 
 blogsRouter.get('/', async (request, response) => {
   const Blogs = await Blog.find({}).populate('user', {

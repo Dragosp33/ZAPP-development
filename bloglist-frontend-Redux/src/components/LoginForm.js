@@ -68,7 +68,7 @@ const LoginForm = ({
         <div className="particles-background"></div>
         <LoginParticles />
         {/*<div className="gradient-follow" style={pseudoElementStyle}></div>*/}
-        <div className="login-page-content">
+        <div className="container-xl login-page-content">
           <div className="row">
             <div className="login-header">
               {/* <img
@@ -80,7 +80,7 @@ const LoginForm = ({
               <ThreeDBolt />
             </div>
           </div>
-          <div className="row row-cols-1 row-cols-md-2 g-4">
+          <div className="row row-cols-1 row-cols-lg-2 g-4 p-lg-0 p-sm-5 mb-5 m-sm-2 align-items-center">
             <div className="col">
               {/*} <div
                 className="info-container"
@@ -129,6 +129,19 @@ const LoginForm = ({
                         {' '}
                         **recommended for pc, this is still under optimization
                       </small>
+                    </div>
+                    <div className="flex flex-column">
+                      <div>
+                        <h5> For testing purposes, use this account:</h5>
+                        <ul>
+                          <li> username: user</li>
+                          <li> password: pass</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h5> Or sign up for a new account</h5>
+                        <p> You will shortly receive a verification email</p>
+                      </div>
                     </div>
                     <Modal
                       show={show}

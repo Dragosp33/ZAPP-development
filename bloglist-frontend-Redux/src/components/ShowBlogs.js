@@ -52,12 +52,26 @@ const ShowBlogs = ({ user = null }) => {
   return (
     <>
       <div className="container" style={{ maxWidth: '540px' }}>
-        {user ? <p> blogs by user {user.username}</p> : null}
-        {stateBlogs.map((blog) => (
-          <div key={blog.id} style={{ width: '100%' }}>
-            <ShowBlogsItem blog={blog} />
-          </div>
-        ))}
+        {user ? (
+          <>
+            <p>blogs by user {user.username}</p>
+            {stateBlogs.map(
+              (blog) =>
+                // Check if the blog user id matches the current user id
+                blog.user.id === user.id && (
+                  <div key={blog.id} style={{ width: '100%' }}>
+                    <ShowBlogsItem blog={blog} />
+                  </div>
+                ),
+            )}
+          </>
+        ) : (
+          stateBlogs.map((blog) => (
+            <div key={blog.id} style={{ width: '100%' }}>
+              <ShowBlogsItem blog={blog} />
+            </div>
+          ))
+        )}
       </div>
     </>
   )

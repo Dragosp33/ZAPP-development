@@ -65,30 +65,35 @@ const SingleUser = ({ userPage }) => {
   console.log(user)
   return (
     <>
-      <div
-        className="edit-profile-pic-flex"
-        style={{ flexDirection: 'column', alignItems: 'center' }}
-      >
-        <div style={{ marginRight: '1rem', marginLeft: '1rem' }}>
-          <img
-            src={user.profilePicUrl}
-            style={{ height: '100px', borderRadius: '50%' }}
-            alt="profile pic"
-          />
-        </div>
-        <div style={{ marginTop: '1rem' }}>
-          <h5> {user.username} </h5>
-        </div>
-        {editable ? (
-          <div className="edit-btn-container">
-            <button
-              className=" btn btn-primary profile-edit-btn"
-              onClick={() => setShowModal(true)}
-            >
-              <i class="bi bi-arrow-repeat"></i>
-            </button>
+      <div className="d-flex flex-column w-100">
+        <div
+          className="edit-profile-pic-flex"
+          style={{ flexDirection: 'column', alignItems: 'center' }}
+        >
+          <div style={{ marginRight: '1rem', marginLeft: '1rem' }}>
+            <img
+              src={user.profilePicUrl}
+              style={{ height: '100px', borderRadius: '50%' }}
+              alt="profile pic"
+            />
           </div>
-        ) : null}
+          <div style={{ marginTop: '1rem' }}>
+            <h5> {user.username} </h5>
+          </div>
+          {editable ? (
+            <div className="edit-btn-container">
+              <button
+                className=" btn btn-primary profile-edit-btn"
+                onClick={() => setShowModal(true)}
+              >
+                <i class="bi bi-arrow-repeat"></i>
+              </button>
+            </div>
+          ) : null}
+        </div>
+        <div style={{ width: '100%' }}>
+          <ShowBlogs user={user} />
+        </div>
       </div>
       <Modal
         show={showModal}
