@@ -12,6 +12,7 @@ const blogSchema = new mongoose.Schema({
       ref: 'User',
     },
   ],
+  creationDate: Date,
 })
 
 blogSchema.set('toJSON', {

@@ -70,11 +70,10 @@ const MenuSearch = () => {
     }
   }, [showDropdown])
 
-  console.log('SHOWDROPDOWN: ', showDropdown)
   return (
     <div className="dropdown dropdown-search">
       <button
-        className="btn btn-secondary dropdown-toggle dropdown-toggle-search"
+        className="btn dropdown-toggle dropdown-toggle-search"
         type="button"
         data-bs-toggle="dropdown"
         data-bs-auto-close="outside"
@@ -85,7 +84,10 @@ const MenuSearch = () => {
           <div>
             <i className="bi bi-search"></i>
           </div>
-          <div style={{ paddingLeft: '0.5rem' }}> Search </div>
+          <div className="search-text" style={{ paddingLeft: '0.5rem' }}>
+            {' '}
+            Search{' '}
+          </div>
         </div>
       </button>
       <ul className="dropdown-menu search-menu">
@@ -97,8 +99,6 @@ const MenuSearch = () => {
             } `}
             style={{ marginRight: '0.3rem' }}
             onClick={() => {
-              //setShowDropdown(false)
-              // console.log('CLICKED!!!')
               document.querySelector('.dropdown-toggle-search').click() // Programmatically close the dropdown
             }}
           >
@@ -129,8 +129,6 @@ const MenuSearch = () => {
           filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
               <li key={user.id}>
-                {' '}
-                {/* <a href={`/users/${user.id}`}>{user.username}</a> */}
                 <MenuSearchItem user={user} />
               </li>
             ))

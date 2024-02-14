@@ -58,7 +58,7 @@ const Menu = ({ handleLogout }) => {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className={navClass} fixed="top">
-        <Container fluid className="navigation-grid">
+        <Container fluid={'xxl'} className="navigation-grid">
           <Navbar.Brand href="/"> Zapp </Navbar.Brand>
           <div className="bd-navbar-toggle">
             <button
@@ -72,16 +72,6 @@ const Menu = ({ handleLogout }) => {
               <i className="bi bi-list"></i>
             </button>
           </div>
-          {/*}
-          <Form className="d-flex Search">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            {/*} <Button variant="outline-success">Search</Button>
-          </Form>*/}
 
           <MenuSearch />
           <div className="nav-notifications">
@@ -89,30 +79,12 @@ const Menu = ({ handleLogout }) => {
               <i className="bi bi-bell"></i>
             </Button>
           </div>
-          {/*<Navbar.Toggle aria-controls="responsive-navbar-nav" />*/}
+
           <div className="order-lg-3 profile-offcanvas">
             <Button variant="dark" onClick={handleOffcanvasShow}>
               <i className="bi bi-person-gear"></i>
             </Button>
           </div>
-          {/* <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav
-              className="justify-content-end flex-grow-1 pe-3"
-              variant="underline"
-              defaultActiveKey="/"
-            >
-              <Nav.Item>
-                <Nav.Link eventKey="/" as={Link} to="/">
-                  Home
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="/users" as={Link} to="/users">
-                  users
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-  </Navbar.Collapse>*/}
         </Container>
       </Navbar>
 

@@ -39,7 +39,7 @@ blogsRouter.post(
         const randomString = uuidv4()
         const key = randomString + Date.now() + path.extname(file.originalname)
         const params = {
-          Bucket: 'heroevent',
+          Bucket: 'photobucket333',
           Key: key,
           Body: file.buffer,
         }
@@ -49,7 +49,7 @@ blogsRouter.post(
 
         // Store the S3 object URL in your database or return it to the client
         // 015e31933548461020e2ba448e85995e
-        const s3ObjectUrl = `https://heroevent.s3.eu-west-3.amazonaws.com/${key}`
+        const s3ObjectUrl = `https://photobucket333.s3.eu-west-3.amazonaws.com/${key}`
         uploadedImages.push(s3ObjectUrl)
       }
 
@@ -64,6 +64,7 @@ blogsRouter.post(
         likes: 0,
         images: uploadedImages,
         user: user._id,
+        creationDate: new Date(Date.now()),
       })
       console.log(toSaveBlog)
       const savedBlog = await toSaveBlog.save()
@@ -87,12 +88,14 @@ blogsRouter.post(
 )
 
 blogsRouter.get('/', async (request, response) => {
-  const Blogs = await Blog.find({}).populate('user', {
-    username: 1,
-    name: 1,
-    profilePicUrl: 1,
-  })
-  // console.log(Blogs)
+  const Blogs = await Blog.find({})
+    .sort({ creationDate: -1 })
+    .populate('user', {
+      username: 1,
+      name: 1,
+      profilePicUrl: 1,
+    })
+  console.log(Blogs)
   response.json(Blogs)
 })
 

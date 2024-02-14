@@ -98,7 +98,7 @@ usersRouter.put(
     const randomString = uuidv4()
     const key = 'BAGPL' + randomString + Date.now() + '.jpg'
     const params = {
-      Bucket: 'heroevent',
+      Bucket: 'photobucket333',
       Key: key,
       Body: file.buffer,
     }
@@ -106,7 +106,7 @@ usersRouter.put(
     const command = new PutObjectCommand(params)
     await s3Client.send(command)
 
-    const s3ObjectUrl = `https://heroevent.s3.eu-west-3.amazonaws.com/${key}`
+    const s3ObjectUrl = `https://photobucket333.s3.eu-west-3.amazonaws.com/${key}`
 
     user.profilePicUrl = s3ObjectUrl
     const savedUser = await user.save()
@@ -115,9 +115,10 @@ usersRouter.put(
   }
 )
 
+/*
 usersRouter.delete('/:id', async (request, response) => {
   await User.findByIdAndRemove(request.params.id)
   response.status(204).end()
-})
+})*/
 
 module.exports = usersRouter

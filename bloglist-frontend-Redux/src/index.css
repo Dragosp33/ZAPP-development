@@ -618,10 +618,6 @@ a {
   }
 }
 
-[data-bs-theme="dark"] .navbar {
-  border-color: yellow;
-}
-
 @media (max-width: 662px) {
   .main {
     width: 92vw;
@@ -650,4 +646,18 @@ a {
   background: radial-gradient(midnightblue, black);
   justify-content: center;
   overflow: hidden;
+}
+
+.create_post_btn {
+  border: #c6c7c8 solid 1px;
+  width: 100%;
+  max-width: 540px;
+}
+
+[data-bs-theme="light"] .bi-heart {
+  color: black;
+}
+
+[data-bs-theme="dark"] .bi-heart {
+  color: white;
 }

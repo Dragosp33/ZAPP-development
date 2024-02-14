@@ -155,12 +155,6 @@ const BlogForm = ({ handleSubmit }) => {
     const modalDialog = document.querySelector('.modal')
     if (!modalDialog) return
 
-    /* const offsetLeft = visualViewport.offsetLeft
-    const offsetTop =
-      visualViewport.height -
-      layoutViewport.getBoundingClientRect().height +
-      visualViewport.offsetTop
-*/
     setModalHeight(`${visualViewport.height}px`)
     modalDialog.style.height = `${visualViewport.height}px`
     modalDialog.classList.add('modal-height-transition')
@@ -212,12 +206,8 @@ const BlogForm = ({ handleSubmit }) => {
     const modalDialog = document.querySelector('.modal')
     if (!modalDialog) return
     setShowSecond(true)
-    //modalDialog.classList.add('second-transition')
+
     modalDialog.classList.add('second-transition')
-    /*setTimeout(() => {
-      // modalDialog.classList.remove('second-transition-exit')
-      modalDialog.classList.add('second-transition')
-    }, 150)*/
   }
 
   function handleCloseSecond() {
@@ -279,8 +269,12 @@ const BlogForm = ({ handleSubmit }) => {
   return (
     <>
       <ToastContainer />
-      <Button className="me-2 mb-2" onClick={() => handleShow()}>
-        What zapped your head?
+      <Button
+        // className="ms-2 mb-2 create_post_btn"
+        className={`bg-${theme} btn-${theme} rounded create_post_btn`}
+        onClick={() => handleShow()}
+      >
+        Post something
       </Button>
 
       <Modal
@@ -403,24 +397,7 @@ const BlogForm = ({ handleSubmit }) => {
                                     ? 'more-photos'
                                     : ''
                                 }`}
-                              >
-                                {/*}
-                                <div className="image-item__btn-wrapper">
-                                  <button
-                                    type="button"
-                                    className="updateBtn"
-                                    onClick={() => onImageUpdate(index)}
-                                  >
-                                    <img src={refresh} alt="U" />
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => onImageRemove(index)}
-                                  >
-                                    <i className="bi bi-x-circle"></i>
-                                  </button>
-                              </div> */}
-                              </div>
+                              ></div>
                             ))}
                             {imageList.length > 5 && (
                               <div className="more-photos">
@@ -434,14 +411,6 @@ const BlogForm = ({ handleSubmit }) => {
                   </Col>
                 </Row>
               </Row>
-
-              {/*}
-                <Row className="footer-container">
-                  <Col>hello</Col>
-                  <Col>
-                    <Button type="submit">Add blog</Button>
-                  </Col>
-                              </Row>*/}
             </Form>
 
             <Modal

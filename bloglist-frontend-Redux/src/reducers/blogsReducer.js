@@ -11,7 +11,8 @@ const blogSlice = createSlice({
     },
 
     appendBlog(state, action) {
-      state.push(action.payload)
+      //state.push(action.payload)
+      state.unshift(action.payload)
     },
 
     setBlogs(state, action) {

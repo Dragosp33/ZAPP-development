@@ -29,5 +29,9 @@
 }
 
 .carousel-indicators {
-  bottom: -35% !important;
+  bottom: -20% !important;
+}
+
+.carousel-item {
+  height: 400px !important;
 }

@@ -48,6 +48,24 @@
   grid-area: Search;
 }
 
+.dropdown-toggle-search {
+  border-radius: 10px !important;
+  border: 1px solid black !important;
+}
+
+[data-bs-theme="dark"] .dropdown-toggle-search {
+  background-color: transparent !important;
+  border: 1px solid #3c3c3c !important;
+  color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 440px) {
+  .search-text {
+    display: none !important;
+  }
+}
+
 /*
 .search-menu .close-dropdown-btn {
   transform: translateX(-100%) rotate(90deg);

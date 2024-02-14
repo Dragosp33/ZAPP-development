@@ -28,42 +28,8 @@ const ShowBlogsItem = ({ blog }) => {
     }
   }
 
-  const handleSlideChange = (slideIndex) => {
-    setActiveSlide(slideIndex)
-  }
-
-  const handleArrowClickNext = () => {
-    if (activeSlide === blog.images.length - 1) {
-      setActiveSlide(0)
-    } else {
-      setActiveSlide(activeSlide + 1)
-    }
-  }
-
-  const handleArrowClickPrev = () => {
-    if (activeSlide === 0) {
-      setActiveSlide(blog.images.length - 1)
-    } else {
-      setActiveSlide(activeSlide + 1)
-    }
-  }
-
-  const changeActiveSlide = () => {
-    setActiveSlide((prevActive) => (prevActive + 1) % blog.images.length)
-  }
-
-  // Set an interval to change the slide every 5 seconds
-  /*
-  useEffect(() => {
-    const intervalId = setInterval(changeActiveSlide, 5000)
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(intervalId)
-  }, [blog.images.length])
-*/
   return (
-    <>
-      <Link to={`/blogs/${blog.id}`}> go to this blog </Link>
+    <div className="mt-5">
       <Card>
         <Card.Header>
           <div className="blog-card-header-content">
@@ -113,13 +79,14 @@ const ShowBlogsItem = ({ blog }) => {
                           index === 0 ? 'active' : ''
                         }`}
                         key={`${blog.id}-${index}`}
+                        // style={{ height: '100%' }}
                       >
                         <div className="carousel-item-image-container">
                           <img
                             src={image}
                             style={{
-                              height: '300px',
-                              objectFit: 'contain',
+                              height: '400px',
+                              objectFit: 'cover',
                               width: '100%',
                             }}
                             alt="..."
@@ -159,7 +126,7 @@ const ShowBlogsItem = ({ blog }) => {
                 <div className="blog-item-onepic-container">
                   <img
                     style={{
-                      height: '200px',
+                      //height: '400px',
                       objectFit: 'contain',
                     }}
                     src={blog.images[0]}
@@ -192,44 +159,9 @@ const ShowBlogsItem = ({ blog }) => {
               <i class="bi bi-heart-fill"></i>
             </Button>
           )}
-
-          {/* blog.images.length > 1 ? (
-            <div
-              className="carousel-indicators"
-              style={{ backgroundColor: 'black' }}
-            >
-              {blog.images.map((image, index) => (
-                <button
-                  type="button"
-                  data-bs-target={`#blogsItemCarousel-${blog.id}`}
-                  data-bs-slide-to={index}
-                  className={index === 0 ? 'active' : ''}
-                  aria-current={index === 0 ? true : false}
-                  aria-label={`Slide ${index + 1}`}
-                ></button>
-              ))}
-              </div>) : null*/}
-          {/*blog.images.length > 1 ? (
-            <div
-              className="carousel-indicators"
-              style={{ backgroundColor: 'black' }}
-            >
-              {blog.images.map((image, index) => (
-                <button
-                  type="button"
-                  data-bs-target={`#blogsItemCarousel-${blog.id}`}
-                  data-bs-slide-to={index}
-                  aria-label={`Slide ${index}`}
-                  key={index}
-                  className={index === activeSlide ? 'active' : ''}
-                  onClick={() => handleSlideChange(index)}
-                ></button>
-              ))}
-            </div>
-              ) : null*/}
         </Card.Footer>
       </Card>
-    </>
+    </div>
   )
 }
 
